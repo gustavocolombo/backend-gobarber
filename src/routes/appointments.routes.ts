@@ -6,7 +6,6 @@ import { getCustomRepository} from 'typeorm';
 import AppointmentsReposirory from '../repositories/AppointmentsRepository';
 
 const appointmentsRouter = Router();
-const appointmentsRepository = new AppointmentsRepository();
 
 appointmentsRouter.get('/', async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsReposirory);

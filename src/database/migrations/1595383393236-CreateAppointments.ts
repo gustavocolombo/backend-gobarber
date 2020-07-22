@@ -16,7 +16,7 @@ export class CreateAppointments1595383393236 implements MigrationInterface {
             },
             
             {
-              name : 'provider',
+              name : 'provider', 
               type: 'varchar',
               isNullable: false,
             },
@@ -25,7 +25,19 @@ export class CreateAppointments1595383393236 implements MigrationInterface {
               name : 'date',
               type : 'timestamp ',
               isNullable: false
-            } 
+            },
+
+            {
+              name: 'created_at',
+              type: 'timestamp',
+              default: 'now()',
+            },
+  
+            {
+              name: 'updated_at',
+              type: 'timestamp',
+              default: 'now()'
+            }
           ]
         })
       )
