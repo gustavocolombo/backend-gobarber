@@ -28,7 +28,8 @@ export class AlterProviderFieldToProviderId1595542005683 implements MigrationInt
 
       await queryRunner.addColumn('appointments', new TableColumn({
         name: 'provider',
-        type: 'varchar'
+        type: 'varchar',
+        isNullable: false
       }))
     }
 
