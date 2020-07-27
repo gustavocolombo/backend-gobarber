@@ -2,6 +2,7 @@ import User from '../models/User';
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken';
+import auth from '../config/auth';
 
 interface Request {
   email: string;
@@ -32,9 +33,9 @@ class CreateSessionUserService {
       throw new Error ('Combinação de senha e e-mail incorreta');
     } 
 
-    const token = sign({}, '7ac66c0f148de9519b8bd264312c4d64', {
+    const token = sign({}, auth.jwt.secret , {
       subject: user.id,
-      expiresIn: '1d' 
+      expiresIn: auth.jwt.expiresIn
     })
 
     return {
