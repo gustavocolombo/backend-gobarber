@@ -1,5 +1,6 @@
 import  { Router } from 'express';
 import  CreateUserService from '../services/CreateUserService';
+import ensureAutenticated from '../middlewares/ensureAutenticated';
 
 const usersRouter = Router();
 
@@ -24,5 +25,9 @@ usersRouter.post('/', async  (request, response) => {
    return response.status(400).json({ error: err.message});
  }
 });
+
+usersRouter.patch('/avatar', ensureAutenticated, async (request, response) => [
+
+])
 
 export default usersRouter;
