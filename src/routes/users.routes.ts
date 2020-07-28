@@ -1,9 +1,11 @@
 import  { Router } from 'express';
 import  CreateUserService from '../services/CreateUserService';
 import ensureAutenticated from '../middlewares/ensureAutenticated';
+import multer from 'multer';
+import uploadConfig from '../config/upload';
 
 const usersRouter = Router();
-
+const upload = multer(uploadConfig);
 usersRouter.post('/', async  (request, response) => {
  try{
 
@@ -26,8 +28,11 @@ usersRouter.post('/', async  (request, response) => {
  }
 });
 
-usersRouter.patch('/avatar', ensureAutenticated, async (request, response) => [
-
-])
+usersRouter.patch('/avatar', 
+  ensureAutenticated, 
+  upload.single('avatar'), 
+  async (request, response) => {
+    return response.json({ ok: true})
+ })
 
 export default usersRouter;
